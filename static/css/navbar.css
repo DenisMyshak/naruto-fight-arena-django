@@ -1,0 +1,19 @@
+.login {
+    position: absolute;
+    top: 16.5px;
+    right: 80px;
+    width: 23px;
+    height: 23px;
+}
+
+.login img {
+    width: 100%;
+    height: 100%;
+    vertical-align: baseline;
+}
+
+@media (min-width: 992px) {
+    .login {
+        right: 12px;
+    }
+}
