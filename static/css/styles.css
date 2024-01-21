@@ -63,8 +63,7 @@ textarea:focus {
 	outline: none;
 }
 
-a:hover,
-a:focus {
+a {
 	text-decoration: none;
 	outline: none;
 	color: #ffffff;
@@ -236,16 +235,20 @@ ol {
 	text-transform: uppercase;
 	padding: 14px 20px;
 	border-radius: 4px 0 0 4px;
-	margin-right: 1px;
+	margin-right: 5px;
 }
 
 .hero__text a i {
 	font-size: 20px;
-	display: inline-block;
+	display: inline-flex;
+	align-items: center;
 	background: #e53637;
-	padding: 11px 5px 16px 8px;
 	color: #ffffff;
 	border-radius: 0 4px 4px 0;
+}
+
+.hero__text a i img {
+	height: 17px;
 }
 
 .hero__slider.owl-carousel .owl-item.active .hero__text .label {
@@ -333,6 +336,15 @@ ol {
 	-webkit-transform: rotate(-45deg);
 	-ms-transform: rotate(-45deg);
 	transform: rotate(-45deg);
-	display: block;
+	display: flex;
+	justify-content: center;
 	z-index: 1;
+}
+
+.hero__slider.owl-carousel .owl-nav button span img {
+	height: 30px;
+}
+
+.hero__link {
+	display: inline-flex;
 }
