@@ -28,7 +28,8 @@
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <!-- <span class="navbar-toggler-icon"></span> -->
+        <img src="{% static 'img/menu.svg' %}"/>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -49,8 +50,20 @@
 
   <section class="hero">
     <div class="container">
-      <div class="hero__slider owl-carousel">
-        <div class="hero__items set-bg" data-setbg="{% static 'img/hero-1.jpg' %}">
+      <div class="hero__slider owl-carousel set-bg" data-setbg="{% static 'img/naruto_cleanup.jpg' %}">
+        <div class="hero__items set-bg">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="hero__text">
+                <!-- <div class="label">Adventure</div> -->
+                <h2>Welcome to Naruto Fighting Arena!</h2>
+                <p>No arena has started ...</p>
+                <a href="#" class="hero__link"><span>Create Arena</span><i><img src="{% static 'img/arrow_angle_right.svg' %}"/></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="hero__items set-bg" data-setbg="{% static 'img/hero-1.jpg' %}">
           <div class="row">
             <div class="col-lg-6">
               <div class="hero__text">
@@ -61,31 +74,7 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="hero__items set-bg" data-setbg="{% static 'img/hero-1.jpg' %}">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="hero__text">
-                <div class="label">Adventure</div>
-                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                <p>After 30 days of travel across the world...</p>
-                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="hero__items set-bg" data-setbg="{% static 'img/hero-1.jpg' %}">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="hero__text">
-                <div class="label">Adventure</div>
-                <h2>Fate / Stay Night: Unlimited Blade Works</h2>
-                <p>After 30 days of travel across the world...</p>
-                <a href="#"><span>Watch Now</span> <i class="fa fa-angle-right"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>

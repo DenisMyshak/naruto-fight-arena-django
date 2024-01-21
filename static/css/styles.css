@@ -3,7 +3,7 @@ body {
 	height: 100%;
 	font-family: "Mulish", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	background: #0b0c2a;
+	background: #ffffff;
 	overflow-x: hidden;
 }
 
@@ -190,6 +190,8 @@ ol {
 
 .hero__text h2 {
 	color: #ffffff;
+	background: rgb(0,0,0,0.3);
+	padding: 6px;
 	font-size: 42px;
 	font-family: "Oswald", sans-serif;
 	font-weight: 700;
@@ -206,6 +208,8 @@ ol {
 
 .hero__text p {
 	color: #ffffff;
+	background: rgb(0,0,0,0.3);
+	padding: 6px;
 	font-size: 16px;
 	margin-bottom: 40px;
 	position: relative;
@@ -218,6 +222,7 @@ ol {
 
 .hero__text a {
 	position: relative;
+	margin-bottom: 20px;
 	top: -100px;
 	opacity: 0;
 	-webkit-transition: all, 0.8s;
@@ -228,7 +233,7 @@ ol {
 .hero__text a span {
 	font-size: 13px;
 	color: #ffffff;
-	background: #e53637;
+	background: #e67d32;
 	display: inline-block;
 	font-weight: 700;
 	letter-spacing: 2px;
@@ -242,7 +247,7 @@ ol {
 	font-size: 20px;
 	display: inline-flex;
 	align-items: center;
-	background: #e53637;
+	background: #e67d32;
 	color: #ffffff;
 	border-radius: 0 4px 4px 0;
 }
@@ -299,7 +304,7 @@ ol {
 	font-size: 36px;
 	height: 66px;
 	width: 66px;
-	background: #0b0c2a;
+	background: #ffffff;
 	line-height: 66px;
 	text-align: center;
 	color: #ffffff;
@@ -326,7 +331,7 @@ ol {
 	right: 0;
 	height: 54px;
 	width: 54px;
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(248, 249, 250, 1);
 	content: "";
 	z-index: -1;
 	margin: 0 auto;

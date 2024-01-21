@@ -1,3 +1,24 @@
+.navbar {
+    background-color: #e67d32 !important;
+}
+
+.navbar-brand, .nav-link {
+    color: #ffffff !important;
+}
+
+.navbar-toggler {
+    border: 1px solid #ffffff !important;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 2px rgb(255, 255, 255) !important;
+}
+
+.navbar-toggler img {
+    width: 30px;
+    height: 30px;
+}
+
 .login {
     position: absolute;
     top: 16.5px;
