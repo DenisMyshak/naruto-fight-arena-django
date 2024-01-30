@@ -353,3 +353,7 @@ ol {
 .hero__link {
 	display: inline-flex;
 }
+
+.footer section {
+	background-color: #e67d32 !important;
+}
