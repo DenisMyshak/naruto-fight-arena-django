@@ -1,8 +1,17 @@
-from selenium import webdriver
+# for accessing html page
 from selenium.webdriver.chrome.options import Options
-from bs4 import BeautifulSoup
-import mysql.connector
+from selenium import webdriver
+
+# for work with links
+from urllib.parse import unquote
+from fuzzywuzzy import fuzz
 import re
+
+# for parsing of html page
+from bs4 import BeautifulSoup
+
+# database stuff
+import mysql.connector
 
 def create_database_connection():
     return mysql.connector.connect(
@@ -17,16 +26,18 @@ def search_characters_with_name(character_name, cursor):
     cursor.execute(sql, (character_name,))
     return cursor.fetchall()
 
-def update_character_image(character_name, image_link, cursor):
+def update_character_battle_image(character_name, image_link, cursor):
     if search_characters_with_name(character_name, cursor):
         sql = "UPDATE characters SET battle_image = %s WHERE character_name = %s"
         cursor.execute(sql, (image_link, character_name))
+    else:
+        unmatched_characters.append(character_name)
 
 def scrap_image_and_move_to_db(soup, character_name, cursor):
     try:
         img_container = soup.find("div", class_="imgContainer")
         image_link = "https://jut.su" + img_container.find("a")["href"]
-        update_character_image(character_name, image_link, cursor)
+        update_character_battle_image(character_name, image_link, cursor)
     except Exception as e:
         return e
 
@@ -43,13 +54,14 @@ def create_characters_link_list():
     soup = BeautifulSoup(page_source, "html.parser")
     ninja_list_ul = soup.find('ul', class_='ninja_list')
 
-    character_links = [li.find('a')['href'] for li in ninja_list_ul.find_all('li', recursive=False) if li.find('a')]
+    character_links = [ li.find('a')['href'] for li in ninja_list_ul.find_all('li', recursive=False) if li.find('a')]
     href_pat = r"^\/ninja\/.*$"
-    valid_character_links = [url + link for link in character_links if re.match(href_pat, link)]
+    valid_character_links = ['https://jut.su' + link for link in character_links if re.match(href_pat, link)]
 
     return valid_character_links
 
 def browse_jutsu_and_charac_image(seed_url, page_number=1):
+    print("start parsing" + seed_url)
     try:
         driver.get(seed_url.format(page_number) if page_number > 1 else seed_url)
         page_source = driver.page_source
@@ -64,6 +76,7 @@ def browse_jutsu_and_charac_image(seed_url, page_number=1):
             page_number += 1
             browse_jutsu_and_charac_image(seed_url, page_number)
     except Exception as e:
+        print(e)
         return e
     finally:
         driver.quit()
@@ -71,10 +84,12 @@ def browse_jutsu_and_charac_image(seed_url, page_number=1):
 def extract_character_name(seed_url):
     pattern = r'/ninja/(\w+)/'
     match = re.search(pattern, seed_url)
-    return match.group(1).replace("_", " ") if match else None
+    # unquote just makes signs entcoded, such as %28 %29 to ()
+    return unquote(match.group(1).replace("_", " ")) if match else None
 
 def main():
-    global driver, cursor
+    global driver, cursor, unmatched_characters
+    unmatched_characters = []
 
     chrome_options = Options()
     chrome_options.add_argument("--headless")
@@ -94,3 +109,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    print(unmatched_characters)
